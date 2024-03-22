@@ -153,6 +153,9 @@ For evaluating my model, I've chosen to use the **Root Mean Squared Error (RMSE)
 
 RMSE was chosen over other metrics because of its sensitivity to the magnitude of errors. While Mean Absolute Error (MAE) is a viable alternative that also provides errors in appropriate units, RMSE gives a more weighted assessment by squaring the errors before averaging, which tends to highlight and penalize larger errors more substantially. This characteristic of RMSE is especially useful, where larger errors are more detrimental and thus should be given more attention in the model evaluation process.
 
+In selecting features for the model, I recognize the importance of ensuring that they would be available at the time of prediction. I decided that using outage duration is appropriate as it refers the actual duration, which would be known if I am predicting total number of customers affected by a power outage after it has happened. Similarly, climate category and geographical region are predefined and known ahead of time, making them suitable predictors that would be known when the prediction needs to be made.
+
+
 # Step 6 | Baseline Model
 # Step 7 | Final Model
 # Step 8 | Fairness Analysis
