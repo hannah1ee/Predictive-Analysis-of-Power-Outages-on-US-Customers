@@ -6,7 +6,9 @@ Imagine meticulously planning your meals for the week, stocking your refrigerato
 
 Because outages not only disrupt our daily routines but also pose unnecessary personal and business wastage and disruptions, I decided to explore the critical question:
 
-### Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?
+**Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?**'
+
+### Significance
 
 I believe that it is important to delve into the patterns and underlying causes of power outages to mitigate their occurrences and minimize their impacts. The significance of this investigation extends beyond the confines of our kitchens to the wider sphere of our daily lives and the seamless operation of businesses. Power outages, even those lasting just a few hours, can lead to substantial economic losses and social disruptions, affecting everything from the preservation of food to the functioning of critical infrastructure.
 
@@ -154,6 +156,9 @@ In summary, this dataset provides geographic and demographic insight into the fr
 
 ###  Data Relevance
 
+
+
+'
 **The columns that are relevant to my question are:**
 - `CLIMATE.REGION`: Specifies the climate consistent regions where the outage occured.
 - `CLIMATE.CATEGORY`: Specifies the climate conditionn (warm, cold, or normal) for the year that the outage occured, which can have influenced the severity or duration of the outage
