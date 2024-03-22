@@ -26,6 +26,65 @@ Have you ever had delicious leftovers in your fridge or a week's full of groceri
 
 # Step 2 | Data Cleaning and Exploratory Data Analysis
 
+### Cleaned DataFrame
+
+| outage_start        | outage_restored     |   outage_duration | outage_season   | outage_month   | cause_category     | us_state   | climate_region     | climate_category   | customers_affected   |   total_customers |   total_sales |
+|:--------------------|:--------------------|------------------:|:----------------|:---------------|:-------------------|:-----------|:-------------------|:-------------------|:---------------------|------------------:|--------------:|
+| 2011-07-01 17:00:00 | 2011-07-03 20:00:00 |              3060 | Summer          | July           | severe weather     | Minnesota  | East North Central | normal             | 70000                |           2595696 |       6562520 |
+| 2014-05-11 18:38:00 | 2014-05-11 18:39:00 |                 1 | Spring          | May            | intentional attack | Minnesota  | East North Central | normal             | <NA>                 |           2640737 |       5284231 |
+| 2010-10-26 20:00:00 | 2010-10-28 22:00:00 |              3000 | Autumn          | October        | severe weather     | Minnesota  | East North Central | cold               | 70000                |           2586905 |       5222116 |
+| 2012-06-19 04:30:00 | 2012-06-20 23:00:00 |              2550 | Summer          | June           | severe weather     | Minnesota  | East North Central | normal             | 68200                |           2606813 |       5787064 |
+| 2015-07-18 02:00:00 | 2015-07-19 07:00:00 |              1740 | Summer          | July           | severe weather     | Minnesota  | East North Central | warm               | 250000               |           2673531 |       5970339 |
+
+## Data Cleaning Steps
+
+### 1. Combining Date and Time Columns for Power Outage Start and Restoration
+
+The first step in my data cleaning process involved combining separate date and time columns representing the start and restoration of power outages into single datetime columns. This step was crucial for consistency and improved usability of the data for subsequent analyses.
+
+The code checked if all necessary date and time columns existed in the dataset before proceeding with the combination. Additionally, any errors during conversion were coerced to NaT (Not a Time) values where necessary, ensuring data integrity. Finally, the original date and time columns were dropped from the dataset to avoid redundancy and streamline further analyses. Overall, this cleaning step enhanced the dataset's usability by providing a unified representation of outage start and restoration times.
+
+### 2. Adding Season and Month Names
+
+The second step in my data cleaning process involved adding two new columns to the dataset, `outage_season` and `outage_month`, which provided information about the season and month when each power outage occurred, respectively.
+
+For `outage_season`, I created a custom function `get_season` which is defined to map each month (represented as an integer from 1 to 12) to its corresponding season (Spring, Summer, Autumn, or Winter). This function is then applied to the `outage_start` datetime column to create the new `outage_season` column.
+
+Similarly, for `outage_month`, the `outage_start` datetime column is utilized. The `dt.strftime('%B')` function extracts the full name of the month (e.g., January, February, etc.) and assigns it to the new `outage_month` column.
+
+### 3. Reorders Columns of DataFrame `outageand` and converts numerical columns to numeric type
+
+The third step involved reordering the columns of the DataFrame `outage` and converting certain columns to numeric type. Reordering the columns was primarily for organizational purposes, ensuring that related columns were grouped together logically. This reordering didn't affect the content of the data but improved readability and facilitatedd analysis.
+
+The conversion of columns to numeric type was crucial for ensuring that numerical operations could be performed on these columns accurately. Specifically, the columns `outage_duration`, `total_sales`, and `customers_affected` were converted to numeric type using the `pd.to_numeric` function. This conversion ensured that any entries in these columns that were not numerical (such as non-numeric characters or missing values) were coerced to `NaN` (Not a Number), and then the data type was converted to the nullable integer type `Int64`. This ensured consistency in data representation and allowed for proper numerical analysis without errors due to incompatible data types. 
+
+### 4. Generating Summary Statistics for Quantitative Columns to Remove Outliers
+
+The last last step involved generating summary statistics for quantitative columns (`outage_duration`, `customers_affected`, `total_customers`, `total_sales`) to identify and subsequently remove outliers. The summary statistics were calculated using the `describe()` method, providing key statistical measures such as mean, median, standard deviation, minimum, and maximum values. After obtaining the summary statistics, the function `remove_outliers` was applied to the DataFrame outage using these statistics.
+
+Within the `remove_outliers` function, the Interquartile Range (IQR) method was utilized to determine the bounds for outliers. These bounds were calculated using the first quartile (Q1) and third quartile (Q3) values obtained from the summary statistics. Rows with values falling outside the bounds (determined by multiplying the IQR by 1.5) were removed, except for missing values (NaN). This step ensured that outliers were effectively identified and removed from the dataset while preserving missing data.
+
+Overall, this data cleaning process helped to improve the quality and reliability of the dataset by removing extreme values that could potentially skew the analyses and models later on. Additionally, it facilitated more accurate statistical analyses and modeling by ensuring that the data remained within reasonable ranges.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <iframe
   src="cause_category_count.html"
   width="800"
