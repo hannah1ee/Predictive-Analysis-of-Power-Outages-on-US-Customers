@@ -1,3 +1,6 @@
 remote_theme: pages-themes/slate@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+
+title: Predictive Analysis of Power Outages on US Customers
+description: A data-driven investigation focused on understanding and predicting the impact of power outages on customers in the United States. Through the analysis of various factors such as outage duration, cause categories, climate conditions, and geographical regions, the aim is to develop models that can anticipate the extent of customer disruption during power outages. 
