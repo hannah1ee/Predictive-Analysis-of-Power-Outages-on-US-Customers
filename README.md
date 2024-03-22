@@ -6,6 +6,18 @@ The question I focus on in this project is: Can we predict the total number of c
 
 ### Dataset Overview
 
+| OBS | YEAR | MONTH | U.S.\_STATE | POSTAL.CODE |
+| --: | ---: | ----: | :---------- | :---------- |
+|   1 | 2011 |     7 | Minnesota   | MN          |
+|   2 | 2014 |     5 | Minnesota   | MN          |
+|   3 | 2010 |    10 | Minnesota   | MN          |
+|   4 | 2012 |     6 | Minnesota   | MN          |
+|   5 | 2015 |     7 | Minnesota   | MN          |
+
+
+
+
+
 | OBS | YEAR | MONTH | U.S.\_STATE | POSTAL.CODE | NERC.REGION | CLIMATE.REGION     | ANOMALY.LEVEL | CLIMATE.CATEGORY | OUTAGE.START.DATE         | OUTAGE.START.TIME | OUTAGE.RESTORATION.DATE    | OUTAGE.RESTORATION.TIME | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL | HURRICANE.NAMES | OUTAGE.DURATION | DEMAND.LOSS.MW | CUSTOMERS.AFFECTED | RES.PRICE | COM.PRICE | IND.PRICE | TOTAL.PRICE |   RES.SALES |   COM.SALES |   IND.SALES | TOTAL.SALES | RES.PERCEN | COM.PERCEN | IND.PERCEN | RES.CUSTOMERS | COM.CUSTOMERS | IND.CUSTOMERS | TOTAL.CUSTOMERS | RES.CUST.PCT | COM.CUST.PCT | IND.CUST.PCT | PC.REALGSP.STATE | PC.REALGSP.USA | PC.REALGSP.REL | PC.REALGSP.CHANGE | UTIL.REALGSP | TOTAL.REALGSP | UTIL.CONTRI | PI.UTIL.OFUSA | POPULATION | POPPCT_URBAN | POPPCT_UC | POPDEN_URBAN | POPDEN_UC | POPDEN_RURAL | AREAPCT_URBAN | AREAPCT_UC | PCT_LAND | PCT_WATER_TOT | PCT_WATER_INLAND |
 | --: | ---: | ----: | :---------- | :---------- | :---------- | :----------------- | ------------: | :--------------- | :------------------------ | :---------------- | :------------------------- | :---------------------- | :----------------- | :-------------------- | --------------: | --------------: | -------------: | -----------------: | --------: | --------: | --------: | ----------: | ----------: | ----------: | ----------: | ----------: | ---------: | ---------: | ---------: | ------------: | ------------: | ------------: | --------------: | -----------: | -----------: | -----------: | ---------------: | -------------: | -------------: | ----------------: | -----------: | ------------: | ----------: | ------------: | ---------: | -----------: | --------: | -----------: | --------: | -----------: | ------------: | ---------: | -------: | ------------: | ---------------: |
 |   1 | 2011 |     7 | Minnesota   | MN          | MRO         | East North Central |          -0.3 | normal           | Friday, July 01, 2011     | 5:00:00 PM        | Sunday, July 03, 2011      | 8:00:00 PM              | severe weather     | nan                   |             nan |            3060 |            nan |              70000 |      11.6 |      9.18 |      6.81 |        9.28 | 2.33292e+06 | 2.11477e+06 | 2.11329e+06 | 6.56252e+06 |    35.5491 |     32.225 |    32.2024 |       2308736 |        276286 |         10673 |         2595696 |      88.9448 |       10.644 |       0.4112 |            51268 |          47586 |        1.07738 |               1.6 |         4802 |        274182 |     1.75139 |           2.2 |    5348119 |        73.27 |     15.28 |         2279 |    1700.5 |         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
