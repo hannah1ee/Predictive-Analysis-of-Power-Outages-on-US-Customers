@@ -6,13 +6,103 @@ The question I focus on in this project is: Can we predict the total number of c
 
 ### Dataset Overview
 
-| OBS | YEAR | MONTH | U.S.\_STATE | POSTAL.CODE |
-| --: | ---: | ----: | :---------- | :---------- |
-|   1 | 2011 |     7 | Minnesota   | MN          |
-|   2 | 2014 |     5 | Minnesota   | MN          |
-|   3 | 2010 |    10 | Minnesota   | MN          |
-|   4 | 2012 |     6 | Minnesota   | MN          |
-|   5 | 2015 |     7 | Minnesota   | MN          |
+**Table 1: Geographic and Climate Information**
+| OBS | YEAR | MONTH | U.S.\_STATE | POSTAL.CODE | NERC.REGION | CLIMATE.REGION     | ANOMALY.LEVEL | CLIMATE.CATEGORY |
+| --: | ---: | ----: | :---------- | :---------- | :---------- | :----------------- | ------------: | :--------------- |
+|   1 | 2011 |     7 | Minnesota   | MN          | MRO         | East North Central |          -0.3 | normal           |
+|   2 | 2014 |     5 | Minnesota   | MN          | MRO         | East North Central |          -0.1 | normal           |
+|   3 | 2010 |    10 | Minnesota   | MN          | MRO         | East North Central |          -1.5 | cold             |
+|   4 | 2012 |     6 | Minnesota   | MN          | MRO         | East North Central |          -0.1 | normal           |
+|   5 | 2015 |     7 | Minnesota   | MN          | MRO         | East North Central |           1.2 | warm             |
+
+| OUTAGE.START.DATE         | OUTAGE.START.TIME | OUTAGE.RESTORATION.DATE    | OUTAGE.RESTORATION.TIME |
+| :------------------------ | :---------------- | :------------------------- | :---------------------- |
+| Friday, July 01, 2011     | 5:00:00 PM        | Sunday, July 03, 2011      | 8:00:00 PM              |
+| Sunday, May 11, 2014      | 6:38:00 PM        | Sunday, May 11, 2014       | 6:39:00 PM              |
+| Tuesday, October 26, 2010 | 8:00:00 PM        | Thursday, October 28, 2010 | 10:00:00 PM             |
+| Tuesday, June 19, 2012    | 4:30:00 AM        | Wednesday, June 20, 2012   | 11:00:00 PM             |
+| Saturday, July 18, 2015   | 2:00:00 AM        | Sunday, July 19, 2015      | 7:00:00 AM              |
+
+| CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL | HURRICANE.NAMES |
+| :----------------- | :-------------------- | --------------: |
+| severe weather     | nan                   |             nan |
+| intentional attack | vandalism             |             nan |
+| severe weather     | heavy wind            |             nan |
+| severe weather     | thunderstorm          |             nan |
+| severe weather     | nan                   |             nan |
+
+| OUTAGE.DURATION | DEMAND.LOSS.MW | CUSTOMERS.AFFECTED |
+| --------------: | -------------: | -----------------: |
+|            3060 |            nan |              70000 |
+|               1 |            nan |                nan |
+|            3000 |            nan |              70000 |
+|            2550 |            nan |              68200 |
+|            1740 |            250 |             250000 |
+
+| RES.PRICE | COM.PRICE | IND.PRICE | TOTAL.PRICE |   RES.SALES |   COM.SALES |   IND.SALES | TOTAL.SALES |
+| --------: | --------: | --------: | ----------: | ----------: | ----------: | ----------: | ----------: |
+|      11.6 |      9.18 |      6.81 |        9.28 | 2.33292e+06 | 2.11477e+06 | 2.11329e+06 | 6.56252e+06 |
+|     12.12 |      9.71 |      6.49 |        9.28 | 1.58699e+06 | 1.80776e+06 | 1.88793e+06 | 5.28423e+06 |
+|     10.87 |      8.19 |      6.07 |        8.15 | 1.46729e+06 | 1.80168e+06 |  1.9513e+06 | 5.22212e+06 |
+|     11.79 |      9.25 |      6.71 |        9.19 | 1.85152e+06 | 1.94117e+06 | 1.99303e+06 | 5.78706e+06 |
+|     13.07 |     10.16 |      7.74 |       10.43 | 2.02888e+06 | 2.16161e+06 | 1.77794e+06 | 5.97034e+06 |
+
+| RES.PERCEN | COM.PERCEN | IND.PERCEN | RES.CUST.PCT | COM.CUST.PCT | IND.CUST.PCT |
+| ---------: | ---------: | ---------: | -----------: | -----------: | -----------: |
+|    35.5491 |     32.225 |    32.2024 |      88.9448 |       10.644 |       0.4112 |
+|    30.0325 |    34.2104 |    35.7276 |      88.8335 |      10.7916 |       0.3748 |
+|    28.0977 |     34.501 |     37.366 |      88.9206 |       10.687 |       0.3924 |
+|    31.9941 |    33.5433 |    34.4393 |      88.8954 |      10.6822 |       0.4224 |
+|    33.9826 |    36.2059 |    29.7795 |      88.8216 |      10.8113 |        0.367 |
+
+|   RES.SALES |   COM.SALES |   IND.SALES | TOTAL.SALES |
+| ----------: | ----------: | ----------: | ----------: |
+| 2.33292e+06 | 2.11477e+06 | 2.11329e+06 | 6.56252e+06 |
+| 1.58699e+06 | 1.80776e+06 | 1.88793e+06 | 5.28423e+06 |
+| 1.46729e+06 | 1.80168e+06 |  1.9513e+06 | 5.22212e+06 |
+| 1.85152e+06 | 1.94117e+06 | 1.99303e+06 | 5.78706e+06 |
+| 2.02888e+06 | 2.16161e+06 | 1.77794e+06 | 5.97034e+06 |
+
+| RES.CUSTOMERS | COM.CUSTOMERS | IND.CUSTOMERS | TOTAL.CUSTOMERS |
+| ------------: | ------------: | ------------: | --------------: |
+|   2.30874e+06 |        276286 |         10673 |      2.5957e+06 |
+|   2.34586e+06 |        284978 |          9898 |     2.64074e+06 |
+|   2.30029e+06 |        276463 |         10150 |     2.58690e+06 |
+|   2.31734e+06 |        278466 |         11010 |     2.60681e+06 |
+|   2.37467e+06 |        289044 |          9812 |     2.67353e+06 |
+
+| PC.REALGSP.STATE | PC.REALGSP.USA | PC.REALGSP.REL | PC.REALGSP.CHANGE | UTIL.REALGSP | TOTAL.REALGSP |
+| ---------------: | -------------: | -------------: | ----------------: | -----------: | ------------: |
+|            51268 |          47586 |        1.07738 |               1.6 |         4802 |        274182 |
+|            53499 |          49091 |        1.08979 |               1.9 |         5226 |        291955 |
+|            50447 |          47287 |        1.06683 |               2.7 |         4571 |        267895 |
+|            51598 |          48156 |        1.07148 |               0.6 |         5364 |        277627 |
+|            54431 |          49844 |        1.09203 |               1.7 |         4873 |        292023 |
+
+| UTIL.CONTRI | PI.UTIL.OFUSA |  POPULATION | POPPCT_URBAN | POPPCT_UC |
+| ----------: | ------------: | ----------: | -----------: | --------: |
+|     1.75139 |           2.2 | 5.34812e+06 |        73.27 |     15.28 |
+|        1.79 |           2.2 | 5.45712e+06 |        73.27 |     15.28 |
+|     1.70627 |           2.1 |  5.3109e+06 |        73.27 |     15.28 |
+|     1.93209 |           2.2 | 5.38044e+06 |        73.27 |     15.28 |
+|      1.6687 |           2.2 | 5.48959e+06 |        73.27 |     15.28 |
+
+| POPDEN_RURAL | AREAPCT_URBAN | AREAPCT_UC | PCT_LAND | PCT_WATER_TOT | PCT_WATER_INLAND |
+| -----------: | ------------: | ---------: | -------: | ------------: | ---------------: |
+|         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
+|         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
+|         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
+|         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
+|         18.2 |          2.14 |        0.6 |  91.5927 |       8.40733 |          5.47874 |
+
+
+
+
+
+
+
+
+
 
 
 
