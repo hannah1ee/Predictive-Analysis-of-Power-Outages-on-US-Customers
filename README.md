@@ -112,7 +112,12 @@ To better explain the missingness of `customers_affected` and potentially move t
 
 ## Missingness Dependency
 
-
+<iframe
+  src="missingness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 # Step 4 | Hypothesis Testing
