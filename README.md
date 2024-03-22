@@ -135,7 +135,27 @@ The plot provided illustrates the empirical distribution of a test statistic use
 
 The red vertical line represents the observed statistic from the original data. The data on the x-axis represent the sum of absolute differences across permutations, and the counts on the y-axis represent how often each sum occurred during the permutation test. 
 
-Because my observed statistic lies outside the distribution of the permuted statistics, this suggests that there is a low probability that the observed missingness pattern could have occurred if the missingness was indeed random with respect to the `cause_category`. Therefore, the missingness could be NMAR (Not Missing at Random), meaning that the probability of missingness is related to the data itself, possibly affected by the `cause_category`. The low p-value, 0, also suggests that the observed data, the pattern of missingness in `customers_affected` relative to `cause_category`) is highly unlikely under the null hypothesis. With respect to my question, the results of the missingness permutation tests also suggest that we may be able to predict the total number of customers affected by a power outage based on outage causes. 
+Because my observed statistic lies outside the distribution of the permuted statistics, this suggests that there is a low probability that the observed missingness pattern could have occurred if the missingness was indeed random with respect to the `cause_category`. Therefore, the missingness could be NMAR (Not Missing at Random), meaning that the probability of missingness is related to the data itself, possibly affected by the `cause_category`. 
+
+A P-value of 0.0 suggests that the observed data, the pattern of missingness in `customers_affected` relative to `cause_category`, is highly unlikely under the null hypothesis. The null hypothesis is this case would be that there is no association or effect between the missingness of `customers_affected` in dependence of `cause_category`. Because the p-value is 0.0, I am lead to reject this null hypothesis, concluding that there is some sort of statistical evidence of a non-random dependence of the missingness of `customers_affected` on `cause_category`, which would lead me to think that the missingness type of customers_affected is NMAR
+
+With respect to my question, the results of the missingness permutation tests also suggest that we may be able to predict the total number of customers affected by a power outage based on outage causes. 
+
+<iframe
+  src="not-dependent.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+This plot provided illustrates the empirical distribution of a test statistic used in a permutation test to evaluate the missingness of 'customers_affected' based on 'climate_category'. Similar to the graph above, it indicates the frequency of the sum of absolute differences in the proportion of missing 'customers_affected' data across different permutations of the 'climate_category'. 
+
+However, because in this plot my observed statistic lies within the distribution of the permuted statistics, this suggests that there is a high probability that the observed missingness pattern could have occurred if the missingness was indeed not random with respect to the `climate_category`. Therefore, the missingness could be MAR (Missing at Random), meaning that the probability of missingness is related to the data itself. 
+
+A P-value of 0.47 suggests that the observed data, the pattern of missingness in `customers_affected` relative to 'climate_category', is not statistically that unlikely under the null hypothesis. The null hypothesis is this case would be that there is no association or effect between the missingness of `customers_affected` in dependence of 'climate_category'. Because the p-value is 0.47, I am unable to reject this null hypothesis, which would lead me to think that the missingness type of `customers_affected` could be MAR
+
+With respect to my question, the results of the missingness permutation tests also suggest that we may not be able to predict the total number of customers affected by a power outage based on climate categories. 
+
 
 # Step 4 | Hypothesis Testing
 
