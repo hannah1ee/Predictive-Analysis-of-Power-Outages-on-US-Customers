@@ -119,6 +119,11 @@ To better explain the missingness of `customers_affected` and potentially move t
   frameborder="0"
 ></iframe>
 
+The plot provided illustrates the empirical distribution of a test statistic used in a permutation test to evaluate the missingness of 'customers_affected' based on 'cause_category'. It indicates the frequency of the sum of absolute differences in the proportion of missing 'customers_affected' data across different permutations of the 'cause_category'. 
+
+The red vertical line represents the observed statistic from the original data. The data on the x-axis represent the sum of absolute differences across permutations, and the counts on the y-axis represent how often each sum occurred during the permutation test. 
+
+Because my observed statistic lies outside the distribution of the permuted statistics, this suggests that there is a low probability that the observed missingness pattern could have occurred if the missingness was indeed random with respect to the `cause_category`. Therefore, the missingness could be NMAR (Not Missing at Random), meaning that the probability of missingness is related to the data itself, possibly affected by the `cause_category`. The low p-value, 0, also suggests that the observed data, the pattern of missingness in `customers_affected` relative to `cause_category`) is highly unlikely under the null hypothesis. With respect to my question, the results of the missingness permutation tests also suggest that we may be able to predict the total number of customers affected by a power outage based on outage causes. 
 
 # Step 4 | Hypothesis Testing
 
