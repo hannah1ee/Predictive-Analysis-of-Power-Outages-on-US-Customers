@@ -1,7 +1,5 @@
 # Step 1 | Introduction
 
-### Dataset
-
 ### Project Focus
 
 The question I focus on in this project is: Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?
