@@ -127,6 +127,19 @@ Because my observed statistic lies outside the distribution of the permuted stat
 
 # Step 4 | Hypothesis Testing
 
+**Null hypothesis (H0)**: The mean number of customers affected by power outages in warm climate regions is equal to that in cold climate regions.
+
+**Alternative hypothesis (H1)**: The mean number of customers affected by power outages in warm climate regions is different from that in cold climate regions.
+
+**Test Statistic**: absolute difference in means between the two climate categories. 
+
+**Significance Level:** The significance level (α) will be set to 0.05.
+
+**Resulting P-Value:** 0.739. This p-value is substantially higher than my significance level (α) of 0.05, which means that there is a high probability of observing the data, or something more extreme, if my null hypothesis was true. In other words, the data does not provide sufficiennt evidence to reject the null hypothesis. 
+
+**Conclusion:** Therefore, I conclude that, based on my sample data, there is likely no statistically significant difference in the mean number of customers affected by power outages between warm and cold climate regions. The high p-value suggests that any observed difference in means has a good change of being due to random chance rather than a true effect of climate on the number of customers affected.
+
+**Significance:** These choices are good choices for answering the question I am trying to answer, Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?, because it lets me know that there is likely not a strong correlation between power outages in varying climate regions and the mean number of customers affected by power outages. I can likely not train on this feature because there is not a strong absolute difference in means. 
 
 
 
