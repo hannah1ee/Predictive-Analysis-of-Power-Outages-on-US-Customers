@@ -141,9 +141,18 @@ Because my observed statistic lies outside the distribution of the permuted stat
 
 **Significance:** These choices are good choices for answering the question I am trying to answer, Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?, because it lets me know that there is likely not a strong correlation between power outages in varying climate regions and the mean number of customers affected by power outages. I can likely not train on this feature because there is not a strong absolute difference in means. 
 
-
-
 # Step 5 | Framing a Prediction Problem
+
+My prediction problem is: **Predict the total number of customers affected by a power outage based on various features such as outage duration, climate category, and geographical region**
+
+The type of prediction problem is: **regression**. Predicting the total number of customers affected by a power outage using predictors like outage duration, climate category, and geographical region is inherently a regression problem because the response variable—total number of customers affected—is a continuous variable. 
+
+The response variable I've chosen for my predictive model is the **total number of customers affected by power outages**. I selected this variable because it directly reflects the impact of an outage event and is a critical factor for utility companies when allocating resources for emergency response and restoration.
+
+For evaluating my model, I've chosen to use the **Root Mean Squared Error (RMSE)** as my metric. I chose RMSE because it express the average prediction error in the same units as the response variable itself, making it very intuitive. I can very easily see a clear indication of the average distance between the predicted and actual values. This is particularly helpful and important in my analysis, as it gives a straightforward interpretation of the model's performance. 
+
+RMSE was chosen over other metrics because of its sensitivity to the magnitude of errors. While Mean Absolute Error (MAE) is a viable alternative that also provides errors in appropriate units, RMSE gives a more weighted assessment by squaring the errors before averaging, which tends to highlight and penalize larger errors more substantially. This characteristic of RMSE is especially useful, where larger errors are more detrimental and thus should be given more attention in the model evaluation process.
+
 # Step 6 | Baseline Model
 # Step 7 | Final Model
 # Step 8 | Fairness Analysis
