@@ -19,8 +19,11 @@ The question I focus on in this project is: Can we predict the total number of c
 
 This dataset provides insight into the frequency, causes, and impacts of major power outages across different regions and climates in the US from January 2000 to July 2016. It has 56 columns, and 1534 total rows. The columns that are relevant to my question specifically are  `CLIMATE.REGION`, `CLIMATE.CATEGORY`, `OUTAGE.START.DATE`, `OUTAGE.START.TIME`, `OUTAGE.RESTORATION.DATE`, `OUTAGE.RESTORATION.TIME`, `CAUSE.CATEGORY`, `OUTAGE.DURATION`, `CUSTOMERS.AFFECTED`, `TOTAL.SALES`, `U.S._STATE`, and `TOTAL.CUSTOMERS`.
 
+### Relevance
 
+Readers of this website should care about the dataset and the specific question about predicting total number of customers affected by power outage because of the impact of power outages on individuals and businesses. Power outages can disrupt daily life and affect business operations leading to significant economic and social consequence. 
 
+Have you ever had delicious leftovers in your fridge or a week's full of groceries but had to throw them out because the power went out for a couple hours? Understanding the patterns and causes of power outages can provide valuable insights to not have that happen again.
 
 
 # Step 2 | Data Cleaning and Exploratory Data Analysis
