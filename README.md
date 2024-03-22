@@ -217,25 +217,61 @@ if all(column in outage.columns for column in date_time_columns):
 
 **Resulting DataFrame:**
 
-| climate_region     | climate_category   | cause_category     |   outage_duration |   customers_affected |   total_sales | us_state   |   total_customers | outage_start        | outage_restored     |
-|:-------------------|:-------------------|:-------------------|------------------:|---------------------:|--------------:|:-----------|------------------:|:--------------------|:--------------------|
-| East North Central | normal             | severe weather     |              3060 |                70000 |   6.56252e+06 | Minnesota  |           2595696 | 2011-07-01 17:00:00 | 2011-07-03 00:00:00 |
-| East North Central | normal             | intentional attack |                 1 |                  nan |   5.28423e+06 | Minnesota  |           2640737 | 2014-05-11 18:38:00 | 2014-05-11 00:00:00 |
-| East North Central | cold               | severe weather     |              3000 |                70000 |   5.22212e+06 | Minnesota  |           2586905 | 2010-10-26 20:00:00 | 2010-10-28 00:00:00 |
-| East North Central | normal             | severe weather     |              2550 |                68200 |   5.78706e+06 | Minnesota  |           2606813 | 2012-06-19 04:30:00 | 2012-06-20 00:00:00 |
-| East North Central | warm               | severe weather     |              1740 |               250000 |   5.97034e+06 | Minnesota  |           2673531 | 2015-07-18 02:00:00 | 2015-07-19 00:00:00 |
-
-    
-
+| climate_region     | climate_category | cause_category     | outage_duration | customers_affected | total_sales | us_state  | total_customers | outage_start        | outage_restored     |
+| :----------------- | :--------------- | :----------------- | --------------: | -----------------: | ----------: | :-------- | --------------: | :------------------ | :------------------ |
+| East North Central | normal           | severe weather     |            3060 |              70000 | 6.56252e+06 | Minnesota |         2595696 | 2011-07-01 17:00:00 | 2011-07-03 00:00:00 |
+| East North Central | normal           | intentional attack |               1 |                nan | 5.28423e+06 | Minnesota |         2640737 | 2014-05-11 18:38:00 | 2014-05-11 00:00:00 |
+| East North Central | cold             | severe weather     |            3000 |              70000 | 5.22212e+06 | Minnesota |         2586905 | 2010-10-26 20:00:00 | 2010-10-28 00:00:00 |
+| East North Central | normal           | severe weather     |            2550 |              68200 | 5.78706e+06 | Minnesota |         2606813 | 2012-06-19 04:30:00 | 2012-06-20 00:00:00 |
+| East North Central | warm             | severe weather     |            1740 |             250000 | 5.97034e+06 | Minnesota |         2673531 | 2015-07-18 02:00:00 | 2015-07-19 00:00:00 |
 
 
 ### 2. Adding Season and Month Names
 
 The second step in my data cleaning process involved adding two new columns to the dataset, `outage_season` and `outage_month`, which provided information about the season and month when each power outage occurred, respectively.
 
-For `outage_season`, I created a custom function `get_season` which is defined to map each month (represented as an integer from 1 to 12) to its corresponding season (Spring, Summer, Autumn, or Winter). This function is then applied to the `outage_start` datetime column to create the new `outage_season` column.
+For `outage_season`, I created a custom function `get_season` which is defined to map each month (represented as an integer from 1 to 12) to its corresponding season (Spring, Summer, Autumn, or Winter). This function is then applied to the `outage_start` datetime column to create the new `outage_season` column. Similarly, for `outage_month`, the `outage_start` datetime column is utilized. The `dt.strftime('%B')` function extracts the full name of the month (e.g., January, February, etc.) and assigns it to the new `outage_month` column.
 
-Similarly, for `outage_month`, the `outage_start` datetime column is utilized. The `dt.strftime('%B')` function extracts the full name of the month (e.g., January, February, etc.) and assigns it to the new `outage_month` column.
+**Code:**
+```python
+def get_season(month):
+    
+    """
+    function to get the season based on month provided
+    parameters: month number (1-12) 
+    returns: correstponding season ('Spring', 'Summer', 'Autumn', or 'Winter')
+    
+    """
+    
+    # checks to see if month (int) is in the list
+    if month in [3, 4, 5]:
+        # returns 'Spring' if month is found in [3, 4, 5]
+        return 'Spring'
+    # follows same logic for other seasons
+    elif month in [6, 7, 8]:
+        return 'Summer'
+    elif month in [9, 10, 11]:
+        return 'Autumn'
+    else:
+        return 'Winter'
+
+# applies get_season function to create a new column 'outage_season'    
+outage['outage_season'] = outage['outage_start'].dt.month.apply(get_season)
+
+# extracts motnh names using datetime and creating a new categorical column 'outage_month'
+outage['outage_month'] = outage['outage_start'].dt.strftime('%B')
+```
+
+**Resulting DataFrame:**
+
+| climate_region     | climate_category | cause_category     | outage_duration | customers_affected | total_sales | us_state  | total_customers | outage_start        | outage_restored     | outage_season | outage_month |
+| :----------------- | :--------------- | :----------------- | --------------: | -----------------: | ----------: | :-------- | --------------: | :------------------ | :------------------ | :------------ | :----------- |
+| East North Central | normal           | severe weather     |            3060 |              70000 | 6.56252e+06 | Minnesota |         2595696 | 2011-07-01 17:00:00 | 2011-07-03 00:00:00 | Summer        | July         |
+| East North Central | normal           | intentional attack |               1 |                nan | 5.28423e+06 | Minnesota |         2640737 | 2014-05-11 18:38:00 | 2014-05-11 00:00:00 | Spring        | May          |
+| East North Central | cold             | severe weather     |            3000 |              70000 | 5.22212e+06 | Minnesota |         2586905 | 2010-10-26 20:00:00 | 2010-10-28 00:00:00 | Autumn        | October      |
+| East North Central | normal           | severe weather     |            2550 |              68200 | 5.78706e+06 | Minnesota |         2606813 | 2012-06-19 04:30:00 | 2012-06-20 00:00:00 | Summer        | June         |
+| East North Central | warm             | severe weather     |            1740 |             250000 | 5.97034e+06 | Minnesota |         2673531 | 2015-07-18 02:00:00 | 2015-07-19 00:00:00 | Summer        | July         |
+
 
 ### 3. Reorders Columns of DataFrame `outageand` and converts numerical columns to numeric type
 
