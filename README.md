@@ -156,24 +156,23 @@ In summary, this dataset provides geographic and demographic insight into the fr
 
 ###  Data Relevance
 
+In this section, I will detail the columns of the original dataset that I believe can be relevant to answering the focus of my project: Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions? To do this, I will work with the following columns to analyze their association with the total number of customers affected, to in the end fit them to a predictive models that can accurately estimate the total number of customers affected by a power outage based on outage duration.
 
+**Outage Details**
+- `OUTAGE.START.DATE` and `OUTAGE.START.TIME`: The start date and time of an outage can provide insights into the context of the outage, such as whether it occurred during peak demand hours or a known seasonal weather pattern, both of which could influence the number of customers affected.
+- `OUTAGE.RESTORATION.DATE` and `OUTAGE.RESTORATION.TIME`: The restoration timestamps help in understanding the outage's duration and severity. Longer outages might suggest more severe infrastructure damage or more challenging repair conditions, often correlating with a higher number of affected customers.
+- `CAUSE.CATEGORY`: Knowing the cause of an outage (e.g., severe weather, equipment failure, human error) is vital for linking specific events to the number of affected customers. Some causes, like natural disasters, might have a more widespread impact compared to localized issues like equipment failure.
+- `OUTAGE.DURATION`: The total duration of an outage is directly related to the number of customers affected. Longer outages mean more prolonged periods without power for customers, potentially affecting more people as the outage persists.
 
-'
-**The columns that are relevant to my question are:**
-- `CLIMATE.REGION`: Specifies the climate consistent regions where the outage occured.
-- `CLIMATE.CATEGORY`: Specifies the climate conditionn (warm, cold, or normal) for the year that the outage occured, which can have influenced the severity or duration of the outage
-- `OUTAGE.START.DATE`: The exact start date of the outgage, which would be important for understanding if the outage occured at the same day as others for the same reasons
-- `OUTAGE.START.TIME`: The exact start time of the outgage, which would be helpful in determinining if the outgage occured during peak usage times
-- `OUTAGE.RESTORATION.DATE`: The exact restoration date of the outgage, which could be helpful in determining the severity of the outgage
-- `OUTAGE.RESTORATION.TIME`: The exact time the outgage was restored. 
-- `CAUSE.CATEGORY`: This column details the cause of the outgage, which can then be possibly linked to the number of customers affected by the power outgage as well as the duration of the restoration
-- `OUTAGE.DURATION`: The total time of the power outgage, which is a critical factor in determining how many customers are affected because the longer it goes the higher chance a customer is being impacted. 
-- `CUSTOMERS.AFFECTED`: The total number of customers that are impacted by teh outgage. This is also my response / target variable, which I aim to predict thorugh this project
-- `TOTAL.SALES`: The total number of electricity sales measured in megawatts-hour. This could be helpful in relating the number of customers affected during an outgage
-- `U.S._STATE: The geographic location of the outgage, which influences the number of customers affected due to the difference in population density.
-- `TOTAL.CUSTOMERS`: The total number of customers served in a region, which can offer a direct measure of how mnay people could potentially be affected by an outgage because they are the ones vulnerable.
+**Customer and Sales Data**
+- `CUSTOMERS.AFFECTED`: This is the target variable for predictions. Analyzing past events with the number of customers affected can help train a model to predict future outages' impacts based on similar conditions.
+- `TOTAL.SALES`: Electricity sales data, while not directly related to outages, can indicate the typical demand and supply conditions in a region. Understanding normal consumption patterns could help in estimating the scale of disruption caused by an outage.
+- `TOTAL.CUSTOMERS`: The total number of customers in a service area sets the upper limit on how many people could be affected by an outage. It provides a sense of scale and helps in normalizing the impact of outages across regions with varying customer base sizes.
 
-
+**Geographic and Climate Information**
+- `U.S._STATE`: The geographic location of an outage is crucial because population density, infrastructure resilience, and utility service capabilities vary significantly from state to state. States with higher population densities or less robust infrastructure might see a larger number of customers affected by similar outage events.
+- `CLIMATE.REGION`: Climate regions categorizes areas with similar weather patterns, which can influence the likelihood and type of power outages. For example, regions prone to hurricanes might experience more severe but less frequent outages, affecting many customers at once.
+- `CLIMATE.CATEGORY`: This column structures data into normal, warm, or cold periods, which can help identify correlations between climate conditions and outage frequencies or severities. Extreme temperatures, whether hot or cold, can increase energy demand (for cooling or heating), stressing the grid and potentially leading to outages.
 
 # Step 2 | Data Cleaning and Exploratory Data Analysis
 
