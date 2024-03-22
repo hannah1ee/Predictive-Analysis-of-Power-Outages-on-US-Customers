@@ -194,6 +194,30 @@ The first step in my data cleaning process involved combining separate date and 
 
 The code checked if all necessary date and time columns existed in the dataset before proceeding with the combination. Additionally, any errors during conversion were coerced to NaT (Not a Time) values where necessary, ensuring data integrity. Finally, the original date and time columns were dropped from the dataset to avoid redundancy and streamline further analyses. Overall, this cleaning step enhanced the dataset's usability by providing a unified representation of outage start and restoration times.
 
+**Code:**
+
+```python
+# defines columns representing the start and restoration date and times of power outages
+date_time_columns = ['outage_start_date', 'outage_start_time', 'outage_restoration_date', 'outage_restoration_time']
+
+if all(column in outage.columns for column in date_time_columns):
+
+    # combine date and time columns to create a single datetime column for outage start and restoration
+    combined_start = outage['outage_start_date'] + ' ' + outage['outage_start_time']
+    combined_restored = outage['outage_restoration_date'] + ' ' 
+    + outage['outage_restoration_time']
+
+    # convert the combined strings to datetime objects, coercing errors to NaT where NaN
+    outage['outage_start'] = pd.to_datetime(combined_start, errors = 'coerce')
+    outage['outage_restored'] = pd.to_datetime(combined_restored, errors = 'coerce')
+
+    # drops the original date and time columns of outage start and restoration from the DataFrame outage
+    outage = outage.drop(columns = date_time_columns)
+```
+    
+
+
+
 ### 2. Adding Season and Month Names
 
 The second step in my data cleaning process involved adding two new columns to the dataset, `outage_season` and `outage_month`, which provided information about the season and month when each power outage occurred, respectively.
