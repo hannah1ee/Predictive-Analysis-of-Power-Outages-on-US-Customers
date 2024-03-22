@@ -155,7 +155,28 @@ RMSE was chosen over other metrics because of its sensitivity to the magnitude o
 
 In selecting features for the model, I recognize the importance of ensuring that they would be available at the time of prediction. I decided that using outage duration is appropriate as it refers the actual duration, which would be known if I am predicting total number of customers affected by a power outage after it has happened. Similarly, climate category and geographical region are predefined and known ahead of time, making them suitable predictors that would be known when the prediction needs to be made.
 
-
 # Step 6 | Baseline Model
+
+For my baseline model, I developed a Linear Regression model to predict the total number of customers affected by a power outage, informed by 1 quantitative and discrete feature `total_customers` and 1 qualitative and 1 nominal feature `climate_region`. I encoded `climate_region` using OneHotEncoder to transform this categorical column into a format that I can provide to the model for training. 
+
+To prepare my model, I used a ColumnTransformer to handle both numerical and categorical data appropriately, ensuring that my model could handle the different feature types. I used a simple linear regression as the regressor within a Pipeline that includes the preprocessing and regression steps. This approach maintains the flow of data transformation and model application coherently, making the process easier to manage and replicate.
+
+After training the model and making predictions on the test set, I evaluated its performance using the Root Mean Squared Error (RMSE), which is the standard deviation of the residuals (prediction errors). I decided to use RMSE for my regression problem as it gave me a clear indication of how far off my predictions were from the actual numbers in the same units as the target variable. 
+
+The RMSE I got from my baseline model was 72948, which I decided was "decent" because it was a little lower than the standard deviation of the data of the response variable, `customers_affected` in my model, which was 76309. Standard deviation is the spread of all of my response variable, and so it tells me, on average, how far each data point is from the mean. RMSE on the other hand measures the spread of all the prediction errors from the actual outcomes. Both are better to be lower because they mean that the points/predictions are closer to the mean/actual outcome. Because my RMSE is close and a little lower than the standard deviation of the data, I believe that my current model is at least a little "okay" because it is a bit smaller than the standard deviation. 
+
 # Step 7 | Final Model
+
+The features I addded to my Final Model and my reasoning:
+1. PolynomialFeatures for `outage_duration`. I thought it'd be good to add the polynomial features for `outage_duration` because when I performed the Bivariate Analysis on the relationship between `outage_duration` and `customers_affected` I saw that there was a big of a non-linear relationship. Because the relationship was more complex than linear, I thought that it would be good to include polynomial terms so that the model can capture non-linear patterns in the data.
+2. StandardScaler for `total_sales`. I thought that it'd be good to add this because I saw that higher sales correlated with higher population densities and so therefor potentially more complex infrastructures, impacting the total number of customers affected.
+3. For `total_customers` I decided to pass through without any transformation because given that the feature I am lookinng for is total number of customers affected, it seemed reasonable to have a direct relationship with `customers_affected` as they are the ones that aregling to be affected directly. I decided that a passthrough feature would be good here to preserve the scale and distribution of the raw data.
+4. I One-Hot-Encoded categorical the nominal features `cause_category`, `us_state`, and `outage_season` to treat each category as a separate feature without any intrinsic order. I decided that doing this would be best to allow the model to learn the unique imapact of each category and its variables on the number of customers without being impacted by any of the other categories or their variables. 
+
+I also chose these features because as stated in Step 5. Framing a Prediction Problem, I knew it would and is very important for the festures I chose to be available at the time of prediction or after a major power outage. `outage_duration`, `total_customers`, `total_sales`, `cause_category`, `us_state`, and `outage_season` are all features that can be found at the end of a power outage. I also chose the categorical features `cause_category`, `us_state`, and `outage_season` because when I performed my missingness permutation tests, I saw that there was likely to be some kind of relationship between `cause_category`, `us_state`, and `outage_season` and the missingness of `customers_affected` given many p-values close to 0 and less than a significance level of 0.05.
+
+I chose the `RandomForestRegressor` model due to its flexibility and robustness in handling non-linear relationships and interactions among features. Through GridSearchCV, the best hyperparameters—specifically the number of estimators and the maximum depth of the trees—were identified. This was done through cross-validation to ensure that the chosen hyperparameters generalize well to unseen data by evaluating model performance across different subsets of the training data. 
+
+
+
 # Step 8 | Fairness Analysis
