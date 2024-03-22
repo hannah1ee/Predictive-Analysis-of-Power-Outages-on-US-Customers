@@ -214,6 +214,17 @@ if all(column in outage.columns for column in date_time_columns):
     # drops the original date and time columns of outage start and restoration from the DataFrame outage
     outage = outage.drop(columns = date_time_columns)
 ```
+
+**Resulting DataFrame:**
+
+| climate_region     | climate_category   | cause_category     |   outage_duration |   customers_affected |   total_sales | us_state   |   total_customers | outage_start        | outage_restored     |
+|:-------------------|:-------------------|:-------------------|------------------:|---------------------:|--------------:|:-----------|------------------:|:--------------------|:--------------------|
+| East North Central | normal             | severe weather     |              3060 |                70000 |   6.56252e+06 | Minnesota  |           2595696 | 2011-07-01 17:00:00 | 2011-07-03 00:00:00 |
+| East North Central | normal             | intentional attack |                 1 |                  nan |   5.28423e+06 | Minnesota  |           2640737 | 2014-05-11 18:38:00 | 2014-05-11 00:00:00 |
+| East North Central | cold               | severe weather     |              3000 |                70000 |   5.22212e+06 | Minnesota  |           2586905 | 2010-10-26 20:00:00 | 2010-10-28 00:00:00 |
+| East North Central | normal             | severe weather     |              2550 |                68200 |   5.78706e+06 | Minnesota  |           2606813 | 2012-06-19 04:30:00 | 2012-06-20 00:00:00 |
+| East North Central | warm               | severe weather     |              1740 |               250000 |   5.97034e+06 | Minnesota  |           2673531 | 2015-07-18 02:00:00 | 2015-07-19 00:00:00 |
+
     
 
 
