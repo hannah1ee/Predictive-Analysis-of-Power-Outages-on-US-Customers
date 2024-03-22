@@ -39,6 +39,7 @@ Have you ever had delicious leftovers in your fridge or a week's full of groceri
 # Step 2 | Data Cleaning and Exploratory Data Analysis
 
 ### Cleaned DataFrame
+
 | outage_start        | outage_restored     | outage_duration | outage_season | outage_month | cause_category     | us_state  | climate_region     | climate_category | customers_affected | total_customers | total_sales |
 | :------------------ | :------------------ | --------------: | :------------ | :----------- | :----------------- | :-------- | :----------------- | :--------------- | :----------------- | --------------: | ----------: |
 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00 |            3060 | Summer        | July         | severe weather     | Minnesota | East North Central | normal           | 70000              |         2595696 |     6562520 |
