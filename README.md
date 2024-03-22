@@ -1,10 +1,20 @@
 # Step 1 | Introduction
 
-### Project Focus
+Imagine meticulously planning your meals for the week, stocking your refrigerator with fresh groceries, or looking forward to enjoying those sumptuous leftovers, only to find yourself compelled to discard them due to an unexpected power outage lasting several hours. Such scenarios highlight the direct impact and inconvenience that power disruptions can cause in our daily lives. 
 
-**Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?**
+Because outages not only disrupt our daily routines but also pose unnecessary personal and business wastage and disruptions, I decided to explore the critical question:
 
-### Dataset Overview
+### Can we predict the total number of customers affected by a power outage based on outage durations, climate categories, and geographical regions?
+
+I believe that it is important to delve into the patterns and underlying causes of power outages to mitigate their occurrences and minimize their impacts. The significance of this investigation extends beyond the confines of our kitchens to the wider sphere of our daily lives and the seamless operation of businesses. Power outages, even those lasting just a few hours, can lead to substantial economic losses and social disruptions, affecting everything from the preservation of food to the functioning of critical infrastructure.
+
+By aiming to predict the affects of power outages, I hope to unveil patterns that could inform more effective responses to power outages, ensuring that fewer individuals and businesses are adversely affected. The insights derived from this analysis are not only of academic interest but carry profound practical implications for enhancing service's resilience to such disruptions.
+
+## Dataset Overview
+
+The following data was sourced from a comprehensive study documented in the article "Data on major power outage events in the continental U.S.," available on ScienceDirect. This extensive dataset contains detailed records of significant power outages that have occurred across various states within the United States. In addition to documenting instances of major power disruptions, the dataset encompasses a wealth of information covering the geographic specifics of the outages, regional climate data, land utilization attributes, patterns of electricity consumption, and the economic features characterizing the states that have experienced these power outages.
+
+In this section, I aim to provide a detailed introduction to the dataset and explain it's relevance to the central objective of my analysis, predicting the number of customers impacted by power outage events.
 
 **General Information and Geographic/Climate Information**
 
@@ -156,11 +166,6 @@ In summary, this dataset provides geographic and demographic insight into the fr
 - `U.S._STATE: The geographic location of the outgage, which influences the number of customers affected due to the difference in population density.
 - `TOTAL.CUSTOMERS`: The total number of customers served in a region, which can offer a direct measure of how mnay people could potentially be affected by an outgage because they are the ones vulnerable.
 
-### Relevance
-
-Readers of this website should care about the dataset and the specific question about predicting total number of customers affected by power outage because of the impact of power outages on individuals and businesses. Power outages can disrupt daily life and affect business operations leading to significant economic and social consequence. 
-
-Have you ever had delicious leftovers in your fridge or a week's full of groceries but had to throw them out because the power went out for a couple hours? Understanding the patterns and causes of power outages can provide valuable insights to not have that happen again.
 
 
 # Step 2 | Data Cleaning and Exploratory Data Analysis
